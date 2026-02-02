@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>For Lathika ❤️</title>
+<style>
+body {
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(to bottom, #ff9a9e, #fad0c4);
+  font-family: "Georgia", serif;
+  text-align: center;
+  overflow: hidden;
+}
+
+/* Rose background */
+.rose {
+  position: absolute;
+  font-size: 24px;
+  animation: fall 6s linear infinite;
+}
+
+@keyframes fall {
+  0% { transform: translateY(-50px); opacity: 1; }
+  100% { transform: translateY(110vh); opacity: 0; }
+}
+
+/* Typing text */
+#typing {
+  margin-top: 100px;
+  font-size: 2.5em;
+  color: #fff;
+  min-height: 60px;
+}
+
+/* Proposal text */
+#proposal {
+  font-size: 1.8em;
+  color: #fff;
+  margin-top: 20px;
+  animation: glow 2s infinite alternate;
+}
+
+@keyframes glow {
+  from { text-shadow: 0 0 10px #ff4d6d; }
+  to { text-shadow: 0 0 25px #fff; }
+}
+
+.buttons {
+  margin-top: 40px;
+}
+
+button {
+  padding: 15px 40px;
+  font-size: 22px;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  margin: 10px;
+  transition: 0.3s;
+}
+
+#yesBtn {
+  background-color: #fff;
+  color: #ff4d6d;
+}
+
+#noBtn {
+  background-color: #ff4d6d;
+  color: white;
+}
+
+button:hover {
+  transform: scale(1.1);
+}
+
+/* Hearts */
+.heart {
+  position: absolute;
+  color: red;
+  font-size: 20px;
+  animation: float 5s linear infinite;
+}
+
+@keyframes float {
+  0% { transform: translateY(0); opacity: 1; }
+  100% { transform: translateY(-800px); opacity: 0; }
+}
+</style>
+</head>
+<body>
+
+<div id="typing"></div>
+<div id="proposal">Will you be my Valentine, Lathika? 💖</div>
+
+<div class="buttons">
+  <button id="yesBtn" onclick="yesClick()">YES 💕</button>
+  <button id="noBtn" onmouseover="moveNo()">NO 💔</button>
+</div>
+
+<audio id="song" autoplay loop>
+  <source src="thirudi.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+/* Typing animation */
+let text = "Lathika, you are the most beautiful part of my life 🌸";
+let i = 0;
+function typeEffect() {
+  if (i < text.length) {
+    document.getElementById("typing").innerHTML += text.charAt(i);
+    i++;
+    setTimeout(typeEffect, 100);
+  }
+}
+typeEffect();
+
+/* Roses falling */
+setInterval(() => {
+  let rose = document.createElement("div");
+  rose.className = "rose";
+  rose.innerHTML = "🌹";
+  rose.style.left = Math.random() * 100 + "vw";
+  rose.style.animationDuration = (Math.random() * 3 + 3) + "s";
+  document.body.appendChild(rose);
+
+  setTimeout(() => {
+    rose.remove();
+  }, 6000);
+}, 300);
+
+/* Yes button */
+function yesClick() {
+  alert("My heart is yours forever, Lathika 💖 Happy Valentine’s Day 🌹");
+
+  for (let i = 0; i < 100; i++) {
+    let heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerHTML = "❤️";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.top = "100vh";
+    heart.style.fontSize = (Math.random() * 20 + 15) + "px";
+    heart.style.animationDuration = (Math.random() * 3 + 2) + "s";
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+      heart.remove();
+    }, 5000);
+  }
+}
+
+/* No button escape */
+function moveNo() {
+  let noBtn = document.getElementById("noBtn");
+  let x = Math.random() * (window.innerWidth - 100);
+  let y = Math.random() * (window.innerHeight - 50);
+  noBtn.style.position = "absolute";
+  noBtn.style.left = x + "px";
+  noBtn.style.top = y + "px";
+}
+</script>
+
+</body>
+</html>
